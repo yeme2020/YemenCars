@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول | موقع شراء وبيع السيارات</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../css/all.min.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+    <!-- Overlay for sidebar -->
+    <div id="sidebarOverlay"></div>
+
+    <div class="page-container">
+
+        <!-- ===== Header ===== -->
+        <header class="site-header">
+
+            <!-- Toggle Button -->
+            <button id="toggleSidebar" class="sidebar-toggle" aria-label="Toggle menu" title="إظهار القائمة">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <h2 class="site-title">
+                <div class="header-logo">
+                    <img src="../images/logo.png" alt="Shop Used Cars Logo">
+                </div>
+                موقع شراء وبيع <span class="highlight-red">السيارات</span>
+            </h2>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="services.html">الخدمات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li><a href="login.html" class="active">تسجيل الدخول</a></li>
+                    <li><a href="register.html">تسجيل جديد</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- ===== Main Layout ===== -->
+        <main class="main-content">
+
+            <!-- ===== Aside / Sidebar ===== -->
+            <aside class="sidebar" id="sidebar">
+
+                <!-- Logo -->
+                <div class="sidebar-logo">
+                    <img src="../images/logo.png" alt="Shop Used Cars Logo">
+                </div>
+
+                <h3>روابط سريعة</h3>
+
+                <ul class="quick-links">
+                    <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> من نحن</a></li>
+                    <li><a href="services.html"><i class="fa-solid fa-gear"></i> الخدمات</a></li>
+                    <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> تواصل معنا</a></li>
+                </ul>
+            </aside>
+
+
+            <article class="content-area">
+
+                <!-- ===== Login Hero ===== -->
+                <section class="login-hero">
+                    <h2><i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول</h2>
+                    <p>
+                        مرحبًا بعودتك! قم بتسجيل الدخول للوصول إلى حسابك، متابعة إعلاناتك،
+                        والتواصل مع المشترين والبائعين بسهولة.
+                    </p>
+                </section>
+
+                <!-- ===== Login Form ===== -->
+                <section class="login-form-section">
+
+                    <form class="login-form" id="loginForm" novalidate>
+                        <!-- Inline Toast -->
+                        <div id="toast" class="toast toast-inline"></div>
+
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" id="email" placeholder="example@email.com" required>
+                            <small class="error-msg"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>كلمة المرور</label>
+                            <div class="password-box">
+                                <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+                                <i class="fa-solid fa-eye" id="togglePassword"></i>
+                            </div>
+                            <small class="error-msg"></small>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox"> تذكرني
+                            </label>
+
+                            <a href="#" class="forgot-link">نسيت كلمة المرور؟</a>
+                        </div>
+
+                        <button type="submit" class="login-btn">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            دخول
+                        </button>
+
+                        <p class="register-link">
+                            ليس لديك حساب؟
+                            <a href="register.html">سجّل الآن</a>
+                        </p>
+
+                    </form>
+
+                </section>
+
+            </article>
+
+        </main>
+
+        <!-- ===== Footer ===== -->
+        <footer class="site-footer">
+            <p>
+                <span class="author-name">سلوان محمد اليمني</span> — © 2026 جميع الحقوق محفوظة
+            </p>
+        </footer>
+
+    </div>
+
+
+    <!-- Sidebar Script -->
+    <script src="../wowslider/sidebar.js"></script>
+    <!-- Toast Script -->
+    <script src="../js/toast.js"></script>
+
+    <!-- Login Validation Script -->
+    <script src="../js/validation.js"></script>
+
+
+
+</body>
+
+</html>

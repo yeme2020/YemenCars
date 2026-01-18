@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>الصفحة الرئيسية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../css/all.min.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- Overlay for sidebar -->
+    <div id="sidebarOverlay"></div>
+
+    <div class="page-container">
+
+        <!-- ===== Header ===== -->
+        <header class="site-header">
+
+            <!-- Toggle Button -->
+            <button id="toggleSidebar" class="sidebar-toggle" aria-label="Toggle menu" title="إظهار القائمة">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <h2 class="site-title">
+                <div class="header-logo">
+                    <img src="../images/logo.png" alt="Shop Used Cars Logo">
+                </div>
+                موقع شراء وبيع <span class="highlight-red">السيارات</span>
+            </h2>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="services.html">الخدمات</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                    <li><a href="login.html">تسجيل الدخول</a></li>
+                    <li><a href="register.html">تسجيل جديد</a></li>
+                </ul>
+            </nav>
+            <!-- Exit Button -->
+            <button id="exitBtn" class="exit-btn" title="خروج">
+    <i class="fa-solid fa-right-from-bracket"></i>
+</button>
+
+        </header>
+
+       <!-- Exit Confirmation Modal -->
+<div id="exitModal" class="modal-overlay">
+
+    <div class="modal-box">
+        <h3>تأكيد الخروج</h3>
+        <p id="exitMessage">هل أنت متأكد أنك تريد الخروج من الموقع؟</p>
+
+        <div class="modal-actions">
+            <button id="cancelExit" class="btn-cancel">لا</button>
+            <button id="confirmExit" class="btn-confirm">نعم</button>
+        </div>
+    </div>
+
+</div>
+
+
+        <!-- ===== Main Layout ===== -->
+        <main class="main-content">
+
+            <!-- ===== Aside / Sidebar ===== -->
+            <aside class="sidebar" id="sidebar">
+
+                <!-- Logo -->
+                <div class="sidebar-logo">
+                    <img src="../images/logo.png" alt="Shop Used Cars Logo">
+                </div>
+
+                <h3>روابط سريعة</h3>
+
+                <ul class="quick-links">
+                    <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> من نحن</a></li>
+                    <li><a href="services.html"><i class="fa-solid fa-gear"></i> الخدمات</a></li>
+                    <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> تواصل معنا</a></li>
+                </ul>
+            </aside>
+
+            <!-- ===== Main Article ===== -->
+            <article class="content-area">
+
+                <section class="car-carousel">
+
+                    <!-- <h2 class="carousel-title">أحدث موديلات السيارات</h2> -->
+
+                    <div class="carousel-wrapper">
+
+                        <!-- Prev Button -->
+                        <button class="carousel-btn prev" id="prevBtn">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <!-- Scroll Container -->
+                        <div class="carousel-container" id="carousel">
+
+                            <div class="carousel-track">
+
+                                <div class="car-card" data-link="car-details.html?model=camry"
+                                    data-tooltip="انقر لمعرفة تفاصيل السيارة">
+                                    <img src="../images/cars/camry.jpg" alt="Toyota Camry">
+                                    <h3>تويوتا كامري 2024</h3>
+                                    <p>السعر: 12,500$</p>
+                                </div>
+
+                                <div class="car-card" data-link="car-details.html?model=sonata"
+                                    data-tooltip="انقر لمعرفة تفاصيل السيارة">
+                                    <img src="../images/cars/sonata.jpg" alt="Hyundai Sonata">
+                                    <h3>هيونداي سوناتا 2023</h3>
+                                    <p>السعر: 11,000$</p>
+                                </div>
+
+                                <div class="car-card" data-link="car-details.html?model=nissan"
+                                    data-tooltip="انقر لمعرفة تفاصيل السيارة">
+                                    <img src="../images/cars/nissan.jpg" alt="Nissan Altima">
+                                    <h3>نيسان ألتيما 2022</h3>
+                                    <p>السعر: 9,800$</p>
+                                </div>
+
+                                <div class="car-card" data-link="car-details.html?model=bmw"
+                                    data-tooltip="انقر لمعرفة تفاصيل السيارة">
+                                    <img src="../images/cars/bmw.jpg" alt="BMW 5 Series">
+                                    <h3>BMW الفئة الخامسة</h3>
+                                    <p>السعر: 18,500$</p>
+                                </div>
+
+                                <div class="car-card" data-link="car-details.html?model=suzuki"
+                                    data-tooltip="انقر لمعرفة تفاصيل السيارة">
+                                    <img src="../images/cars/suzuki.jpg" alt="Suzuki XL-7">
+                                    <h3>Suzuki XL-7</h3>
+                                    <p>السعر: 11,500$</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Next Button -->
+                        <button class="carousel-btn next" id="nextBtn">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                    </div>
+
+                    <!-- Dots -->
+                    <div class="carousel-dots" id="carouselDots"></div>
+
+                </section>
+
+            </article>
+
+        </main>
+
+        <!-- ===== Footer ===== -->
+        <footer class="site-footer">
+            <p>
+                <span class="author-name">سلوان محمد اليمني</span> — © 2026 جميع الحقوق محفوظة
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Sidebar Script -->
+    <script src="../wowslider/sidebar.js"></script>
+    <!-- Carousel Script -->
+    <script src="../wowslider/wowslider.js"></script>
+    <!-- Exit usin modal with AJAX -->
+    <script src="../js/exit-ajax.js"></script>
+
+</body>
+
+</html>

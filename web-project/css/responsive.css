@@ -1,0 +1,140 @@
+/* =============================
+   TABLET & MOBILE
+============================= */
+
+/* ===== HEADER ===== */
+@media (max-width: 992px) {
+    .site-title {
+        font-size: 1rem;
+    }
+
+    .header-logo img {
+        height: 32px;
+    }
+
+    .main-nav ul {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        padding: 0 12px;
+    }
+
+    .site-title {
+        font-size: 0.9rem;
+        gap: 6px;
+    }
+
+    .header-logo img {
+        height: 26px;
+    }
+
+    .header-center {
+        font-size: 16px;
+    }
+}
+
+/* ===== CAR DETAILS ===== */
+@media (max-width: 600px) {
+    .car-details-card {
+        padding: 18px;
+    }
+
+    .car-specs {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== HERO SECTIONS ===== */
+@media (max-width: 480px) {
+    .about-hero,
+    .about-features,
+    .contact-hero,
+    .contact-form-section,
+    .login-hero,
+    .services-hero {
+        max-width: 95%;
+        padding: 20px;
+    }
+}
+
+/* ===== GRID SYSTEMS ===== */
+@media (max-width: 900px) {
+    .services-grid,
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .services-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== CAROUSEL ===== */
+@media (max-width: 768px) {
+    .carousel-title {
+        font-size: 22px;
+        padding: 8px 18px;
+    }
+
+    .service-image {
+        height: 140px;
+    }
+}
+
+/* ===== LOGIN ===== */
+@media (max-width: 768px) {
+    .login-form {
+        max-width: 100%;
+    }
+}
+/* =============================
+   NAVIGATION
+============================= */
+@media (max-width: 768px) {
+
+    /* Turn nav into dropdown */
+    .main-nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: rgba(30, 41, 59, 0.98);
+        display: none;
+        z-index: 2500;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .main-nav li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav a {
+        display: block;
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* Show class */
+    .main-nav.show {
+        display: block;
+    }
+
+    /* Footer */
+    .site-footer {
+        font-size: 0.8rem;
+        padding: 12px;
+    }
+}

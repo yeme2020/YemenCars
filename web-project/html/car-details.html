@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>تفاصيل السيارة</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../css/all.min.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+    <div class="page-container">
+        <header class="site-header">
+
+            <h2 class="site-title">
+                <div class="header-logo">
+                    <img src="../images/logo.png" alt="Shop Used Cars Logo">
+                </div>
+                موقع شراء وبيع <span class="highlight-red">السيارات</span>
+            </h2>
+            <!-- Center Title -->
+            <div class="header-center">
+                تفاصيل السيارة
+            </div>
+            <!-- Back Button -->
+            <button class="back-btn" onclick="history.back()" title="العودة للصفحة السابقة">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <article class="content-area car-details-page">
+
+                <div class="car-details-card">
+
+                    <img id="carImage" src="../images/sample-car.jpg" alt="Car Image">
+
+                    <h2 id="carTitle">تويوتا كورولا 2022</h2>
+
+                    <p class="car-price">السعر: <span>12,500$</span></p>
+
+                    <div class="car-specs">
+                        <div><strong>الموديل:</strong> 2022</div>
+                        <div><strong>المحرك:</strong> 1.8L بنزين</div>
+                        <div><strong>الحالة:</strong> مستعملة - ممتازة</div>
+                        <div><strong>المسافة المقطوعة:</strong> 45,000 كم</div>
+                        <div><strong>الموقع:</strong> صنعاء، اليمن</div>
+                        <div><strong>الهاتف:</strong> +967 777 123 456</div>
+                    </div>
+
+                    <a href="tel:+967777123456" class="call-btn">
+                        <i class="fa-solid fa-phone"></i> اتصل بالبائع
+                    </a>
+
+                </div>
+
+            </article>
+        </main>
+
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const model = params.get("model");
+        document.getElementById("carTitle").textContent = model
+            ? "موديل السيارة: " + model
+            : "لم يتم تحديد موديل السيارة";
+    </script>
+
+    <script src="../js/car-details.js"></script>
+
+
+</body>
+
+</html>

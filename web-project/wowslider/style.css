@@ -1,0 +1,38 @@
+/* حاوية السلايدر */
+#wowslider-container1 {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+/* كل الصور */
+#wowslider-container1 img {
+    position: absolute;
+    top: 0;
+    right: -100%;              /* خارج من اليمين */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    transform: translateX(0);
+}
+
+/* الصورة الحالية (في المنتصف) */
+#wowslider-container1 img.active {
+    right: 0;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* الصورة الخارجة (تخرج لليسار) */
+#wowslider-container1 img.exit {
+    right: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+}

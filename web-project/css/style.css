@@ -1,0 +1,1335 @@
+/* =============================
+   RESET & GLOBALS
+============================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    background-image: url('../images/Background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* =============================
+   PAGE LAYOUT
+============================= */
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =============================
+   HEADER & TITLE
+============================= */
+.site-header {
+    background: rgba(109, 122, 116, 0.6);
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+     height: 70px; /* يضمن ثبات ارتفاع الهيدر */
+}
+
+.site-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Header logo style */
+.header-logo img {
+    height: 40px; /* يتحكم في حجم اللوجو بدون تغيير ارتفاع الهيدر */
+    width: auto;
+    object-fit: contain;
+}
+
+.site-title i {
+    color: #f1c40f;
+    font-size: 26px;
+}
+
+.highlight-red {
+    color: #e63946;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sidebar-logo img {
+    width: 120px;   /* صغر أو كبر الرقم حسب ما يناسبك */
+    max-width: 100%;
+    height: auto;
+    opacity: 0.95;
+}
+
+/* =============================
+   NAVIGATION (DESKTOP)
+============================= */
+.main-nav {
+    position: static; /* مهم جدًا: يمنع تراكب القائمة */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li {
+    display: block;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.main-nav a:hover {
+    background: #000;
+}
+
+.main-nav a.active {
+    background: #f1c40f;
+    color: #2c3e50;
+}
+
+/* =============================
+   TOGGLE BUTTON
+============================= */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: 0.2s;
+    position: relative;
+    z-index: 3100;
+}
+
+.sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+body.sidebar-open .sidebar-toggle {
+    transform: translateX(-280px);
+}
+
+/* =============================
+   MAIN CONTENT
+============================= */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+}
+
+.content-area {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+}
+
+/* =============================
+   OFF-CANVAS SIDEBAR
+============================= */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background: #1e293b;
+    color: #fff;
+    padding: 15px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 2000;
+    overflow-y: auto;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #f1c40f;
+}
+
+/* =============================
+   SIDEBAR LINKS
+============================= */
+.quick-links {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.quick-links li {
+    margin-bottom: 10px;
+}
+
+.quick-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #e5e7eb;
+    font-weight: bold;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.quick-links a:hover {
+    background: #334155;
+    color: #fff;
+}
+
+/* =============================
+   OVERLAY
+============================= */
+#sidebarOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 1500;
+}
+
+#sidebarOverlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* =============================
+   FOOTER
+============================= */
+.site-footer {
+    background: rgba(109, 122, 116, 0.6);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.author-name {
+    color: #f1c40f;
+    font-style: italic;
+}
+
+
+
+
+/* =============================
+   SIMPLE & SOLID CAROUSEL
+============================= */
+
+.carousel-container {
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none; /* Chrome */
+}
+
+.carousel-track {
+    display: flex;
+}
+
+.car-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    
+}
+
+.car-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+
+.car-card h3 {
+    font-size: 22px;
+    margin-bottom: 6px;
+    color: #2c3e50;
+}
+
+.car-card p {
+    font-size: 18px;
+    color: #e63946;
+    font-weight: bold;
+}
+
+/* النقاط */
+.carousel-dots {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.carousel-dots span {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel-dots span.active {
+    background: #e63946;
+    transform: scale(1.3);
+}
+
+/* ===== TOOLTIP (ONLY FOR CAROUSEL) ===== */
+.carousel-wrapper .car-card {
+    position: relative;
+}
+
+/* Tooltip box */
+.carousel-wrapper .car-card::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease;
+    z-index: 999;
+}
+
+/* Arrow */
+.carousel-wrapper .car-card::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+    opacity: 0;
+    transition: 0.25s ease;
+    z-index: 999;
+}
+
+/* Show on hover */
+.carousel-wrapper .car-card:hover::after,
+.carousel-wrapper .car-card:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =============================
+   WORKING CAROUSEL SYSTEM
+============================= */
+/* Wrapper */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    height: auto;
+}
+
+ 
+/* Scroll container */
+.carousel-container {
+    width: 100%;
+    max-width: 1000px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    height: auto;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Track */
+.carousel-track {
+    display: flex;
+}
+
+/* Card */
+.car-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+/* Image */
+.car-card img {
+    width: 100%;
+    height: 100%;          /* أكبر من قبل */
+    max-height: 60vh;      /* لا تتجاوز 60% من ارتفاع الشاشة */
+    object-fit: contain;  /* يعرض الصورة كاملة بدون قص */
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: #f3f3f3;  /* خلفية جميلة لو الصورة لها نسبة مختلفة */
+}
+
+/* Buttons */
+.carousel-btn {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    font-size: 22px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #e63946;
+}
+
+/* Dots */
+.carousel-dots {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.carousel-dots span {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel-dots span.active {
+    background: #e63946;
+    transform: scale(1.4);
+}
+
+/* =============================
+   FINAL CAROUSEL (SCROLL SNAP)
+============================= */
+
+.car-carousel {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.carousel-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+
+
+/* Scroll container */
+.carousel-container {
+    width: 100%;
+    max-width: auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    direction: ltr;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Track */
+.carousel-track {
+    display: flex;
+}
+
+/* Card */
+.car-card {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Image */
+.car-card img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.carousel-btn {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    font-size: 22px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #e63946;
+}
+
+/* Dots */
+.carousel-dots {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.carousel-dots span {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.carousel-dots span.active {
+    background: #e63946;
+    transform: scale(1.4);
+}
+
+
+
+/* =============================
+   ABOUT PAGE STYLES
+============================= */
+
+.about-hero {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 14px;
+    margin: 30px auto;   /* auto = توسيط أفقي */
+    max-width: 900px;   /* يتحكم في العرض */
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.about-hero h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #1f2933;
+}
+
+.about-hero p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Grid Cards */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* أصغر من قبل */
+    gap: 16px; /* مسافة أقل بين الكروت */
+    margin-bottom: 40px;
+    max-width: 900px;   /* يحدد عرض الشبكة */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 18px;      /* أقل من 25px */
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2); /* ظل أخف */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.about-card i {
+    font-size: 36px;
+    color: #e63946;
+    margin-bottom: 10px;
+}
+
+.about-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.about-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+}
+
+
+
+/* Features */
+.about-features {
+    background: rgba(255, 255, 255, 0.97);
+    padding: 22px;
+    border-radius: 16px;
+    margin: 30px auto;     /* توسيط أفقي */
+    max-width: 420px;     /* عرض صغير ومضغوط */
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+/* Title */
+.about-features h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #1f2933;
+}
+
+/* List */
+.about-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-features li {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.about-features i {
+    color: #16a34a;
+    font-size: 16px;
+}
+
+/* CTA */
+.about-cta {
+    text-align: center;
+    background: linear-gradient(135deg, #1f2933, #111827);
+    color: white;
+    padding: 40px 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.about-cta h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.about-cta p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #e63946;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #f1c40f;
+    color: #1f2933;
+}
+
+/* =============================
+   CONTACT PAGE STYLES
+============================= */
+
+.contact-hero {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    margin: 30px auto;   /* توسيط أفقي */
+    max-width: 600px;   /* تحديد العرض */
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.contact-hero h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #1f2933;
+}
+
+.contact-hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* Grid of contact cards */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 كروت في كل صف */
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto 40px; /* توسيط الشبكة */
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #1f2933;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.contact-card i {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* Platform colors */
+.contact-card.facebook i { color: #1877f2; }
+.contact-card.instagram i { color: #e1306c; }
+.contact-card.twitter i { color: #111827; }
+.contact-card.whatsapp i { color: #25d366; }
+.contact-card.email i { color: #e63946; }
+.contact-card.phone i { color: #16a34a; }
+
+.contact-card h3 {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.contact-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Form */
+.contact-form-section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    margin: 30px auto;   /* توسيط أفقي */
+    max-width: 600px;   /* تحديد العرض */
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.contact-form-section h2 {
+    margin-bottom: 20px;
+    color: #1f2933;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #e63946;
+}
+
+/* Send button */
+.send-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #e63946;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send-btn:hover {
+    background: #f1c40f;
+    color: #1f2933;
+}
+
+/* =============================
+   LOGIN PAGE STYLES
+============================= */
+
+/* Center login form container */
+.login-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* Card container */
+.login-form {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.login-form {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-hero {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    margin: 30px auto;   /* توسيط أفقي */
+    max-width: 500px;   /* تحديد العرض */
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-hero h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #1f2933;
+}
+
+.login-hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.login-form {
+    max-width: 420px;
+    margin: auto;
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-box i {
+    position: absolute;
+    left: 12px; /* RTL */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.forgot-link {
+    color: #e63946;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #e63946;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #f1c40f;
+    color: #1f2933;
+}
+
+.register-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #e63946;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.error-msg {
+    color: #e63946;
+    font-size: 12px;
+    display: none;
+    margin-top: 4px;
+}
+
+/* =============================
+   TOAST INLINE (INSIDE FORM)
+============================= */
+.toast-inline {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+    display: none;          /* مخفي افتراضيًا */
+}
+
+.toast-inline.show {
+    display: block;        /* يظهر عند إضافة show */
+}
+
+.toast-inline.success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #16a34a;
+}
+
+.toast-inline.error {
+    background: #fee2e2;
+    color: #7f1d1d;
+    border: 1px solid #e63946;
+}
+
+
+
+/* =============================
+   SERVICES PAGE STYLES
+============================= */
+
+.services-hero {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    margin: 30px auto 40px; /* توسيط أفقي + مسافة سفلية */
+    max-width: 600px;      /* عرض مناسب */
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.services-hero h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #1f2933;
+}
+
+.services-hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 كروت في كل صف */
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto; /* توسيط الشبكة */
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+.service-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.1);
+}
+
+.service-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.service-content i {
+    font-size: 30px;
+    color: #e63946;
+    margin-bottom: 10px;
+}
+
+.service-content h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.service-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+ 
+/* =============================
+   تفاصيل السيارة
+============================= */
+.back-btn {
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: 10px; /* لأن الموقع RTL */
+}
+
+.back-btn:hover {
+    background: #e63946;
+}
+
+/* ===== CAR DETAILS CARD ===== */
+/* فقط لصفحة تفاصيل السيارة */
+.car-details-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.car-details-card {
+    background: rgba(255, 255, 255, 0.97);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    animation: fadeIn 0.5s ease;
+}
+
+.car-details-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
+
+.car-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #e63946;
+    margin: 10px 0;
+}
+
+.car-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+    text-align: right;
+}
+
+.car-specs div {
+    background: #f3f4f6;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Call Button */
+.call-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: #16a34a;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.call-btn:hover {
+    background: #22c55e;
+}
+
+/* ===== HEADER CENTER TITLE ===== */
+
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #f1c40f;
+    pointer-events: none; /* لا يعطل النقر على الأزرار */
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===== EXIT BUTTON ===== */
+.exit-btn {
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 10px; /* لأن الموقع RTL */
+}
+
+.exit-btn:hover {
+    background: #e63946;
+}
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 5000;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Modal box */
+.modal-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    animation: popIn 0.3s ease;
+}
+
+.modal-box h3 {
+    margin-bottom: 10px;
+    color: #1f2933;
+}
+
+.modal-box p {
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 15px;
+}
+
+/* Buttons */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.btn-cancel,
+.btn-confirm {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* No */
+.btn-cancel {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.btn-cancel:hover {
+    background: #cbd5f5;
+}
+
+/* Yes */
+.btn-confirm {
+    background: #e63946;
+    color: white;
+}
+
+.btn-confirm:hover {
+    background: #f1c40f;
+    color: #1f2933;
+}
+
+/* Animation */
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+

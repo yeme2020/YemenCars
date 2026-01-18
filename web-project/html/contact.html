@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تواصل معنا | موقع شراء وبيع السيارات</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../css/all.min.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+<!-- Overlay for sidebar -->
+    <div id="sidebarOverlay"></div>
+
+    <div class="page-container">
+
+        <!-- ===== Header ===== -->
+        <header class="site-header">
+
+            <!-- Toggle Button -->
+            <button id="toggleSidebar" class="sidebar-toggle" aria-label="Toggle menu" title="إظهار القائمة">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <h2 class="site-title">
+                <div class="header-logo">
+                    <img src="../images/logo.png" alt="Shop Used Cars Logo">
+                </div>
+                موقع شراء وبيع <span class="highlight-red">السيارات</span>
+            </h2>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="services.html">الخدمات</a></li>
+                    <li><a href="contact.html"  class="active">تواصل معنا</a></li> 
+                    <li><a href="login.html">تسجيل الدخول</a></li>
+                    <li><a href="register.html">تسجيل جديد</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- ===== Main Layout ===== -->
+        <main class="main-content">
+
+            <!-- ===== Aside / Sidebar ===== -->
+            <aside class="sidebar" id="sidebar">
+
+                <!-- Logo -->
+                <div class="sidebar-logo">
+                    <img src="../images/logo.png" alt="Shop Used Cars Logo">
+                </div>
+
+                <h3>روابط سريعة</h3>
+
+                <ul class="quick-links">
+                    <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> من نحن</a></li>
+                    <li><a href="services.html"><i class="fa-solid fa-gear"></i> الخدمات</a></li>
+                    <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> تواصل معنا</a></li>
+                </ul>
+            </aside>
+
+        <article class="content-area">
+
+            <!-- ===== Hero ===== -->
+            <section class="contact-hero">
+                <h2><i class="fa-solid fa-envelope-open-text"></i> تواصل معنا</h2>
+                <p>
+                    نحن هنا لمساعدتك في بيع أو شراء سيارتك بسهولة وأمان.
+                    تواصل معنا عبر أي من القنوات التالية أو أرسل لنا رسالة مباشرة.
+                </p>
+            </section>
+
+            <!-- ===== Contact Grid ===== -->
+            <section class="contact-grid">
+
+                <a href="https://facebook.com" target="_blank" class="contact-card facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <h3>فيسبوك</h3>
+                    <p>تابعنا على فيسبوك</p>
+                </a>
+
+                <a href="https://instagram.com" target="_blank" class="contact-card instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                    <h3>إنستغرام</h3>
+                    <p>شاهد أحدث السيارات</p>
+                </a>
+
+                <a href="https://twitter.com" target="_blank" class="contact-card twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <h3>تويتر</h3>
+                    <p>آخر الأخبار والعروض</p>
+                </a>
+
+                <a href="https://wa.me/967700000000" target="_blank" class="contact-card whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <h3>واتساب</h3>
+                    <p>تواصل مباشر معنا</p>
+                </a>
+
+                <a href="mailto:info@carsite.com" class="contact-card email">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3>البريد الإلكتروني</h3>
+                    <p>info@carsite.com</p>
+                </a>
+
+                <a href="tel:+967700000000" class="contact-card phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>الهاتف</h3>
+                    <p>+967 700 000 000</p>
+                </a>
+
+            </section>
+
+            <!-- ===== Contact Form ===== -->
+            <section class="contact-form-section">
+                <h2><i class="fa-solid fa-paper-plane"></i> أرسل لنا رسالة</h2>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label>الاسم الكامل</label>
+                        <input type="text" placeholder="أدخل اسمك" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <input type="email" placeholder="example@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>رقم الهاتف</label>
+                        <input type="tel" placeholder="+967xxxxxxxx">
+                    </div>
+
+                    <div class="form-group">
+                        <label>الرسالة</label>
+                        <textarea rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="send-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        إرسال
+                    </button>
+                </form>
+            </section>
+
+        </article>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+        <p>
+            <span class="author-name">سلوان محمد اليمني</span> — © 2026 جميع الحقوق محفوظة
+        </p>
+    </footer>
+
+</div>
+
+ <!-- Sidebar Script -->
+
+    <script src="../wowslider/sidebar.js"></script>
+
+</body>
+</html>
