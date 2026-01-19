@@ -17,8 +17,8 @@
 
 <body>
 
-   
- <!-- Overlay for sidebar -->
+
+    <!-- Overlay for sidebar -->
     <div id="sidebarOverlay"></div>
 
     <div class="page-container">
@@ -43,13 +43,30 @@
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="about.html">من نحن</a></li>
                     <li><a href="services.html">الخدمات</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li> 
+                    <li><a href="contact.html">تواصل معنا</a></li>
                     <li><a href="login.html">تسجيل الدخول</a></li>
                     <li><a href="register.html" class="active">تسجيل جديد</a></li>
                 </ul>
             </nav>
+            <!-- Exit Button -->
+            <button id="exitBtn" class="exit-btn" title="خروج">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
         </header>
+        <!-- Exit Confirmation Modal -->
+        <div id="exitModal" class="modal-overlay">
 
+            <div class="modal-box">
+                <h3>تأكيد الخروج</h3>
+                <p id="exitMessage">هل أنت متأكد أنك تريد الخروج من الموقع؟</p>
+
+                <div class="modal-actions">
+                    <button id="cancelExit" class="btn-cancel">لا</button>
+                    <button id="confirmExit" class="btn-confirm">نعم</button>
+                </div>
+            </div>
+
+        </div>
         <!-- ===== Main Layout ===== -->
         <main class="main-content">
 
@@ -165,7 +182,8 @@
     <script src="../js/toast.js"></script>
     <!-- Register Script -->
     <script src="../js/register-validation.js"></script>
-
+    <!-- Exit usin modal with AJAX -->
+    <script src="../js/exit-ajax.js"></script>
 
 </body>
 

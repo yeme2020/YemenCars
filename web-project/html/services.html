@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <title>خدماتنا | موقع شراء وبيع السيارات</title>
@@ -14,9 +14,10 @@
     <!-- Responsive -->
     <link rel="stylesheet" href="../css/responsive.css">
 </head>
+
 <body>
 
- <!-- Overlay for sidebar -->
+    <!-- Overlay for sidebar -->
     <div id="sidebarOverlay"></div>
 
     <div class="page-container">
@@ -41,12 +42,31 @@
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="about.html">من نحن</a></li>
                     <li><a href="services.html" class="active">الخدمات</a></li>
-                    <li><a href="contact.html">تواصل معنا</a></li> 
+                    <li><a href="contact.html">تواصل معنا</a></li>
                     <li><a href="login.html">تسجيل الدخول</a></li>
                     <li><a href="register.html">تسجيل جديد</a></li>
                 </ul>
             </nav>
+            <!-- Exit Button -->
+            <button id="exitBtn" class="exit-btn" title="خروج">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+
         </header>
+        <!-- Exit Confirmation Modal -->
+        <div id="exitModal" class="modal-overlay">
+
+            <div class="modal-box">
+                <h3>تأكيد الخروج</h3>
+                <p id="exitMessage">هل أنت متأكد أنك تريد الخروج من الموقع؟</p>
+
+                <div class="modal-actions">
+                    <button id="cancelExit" class="btn-cancel">لا</button>
+                    <button id="confirmExit" class="btn-confirm">نعم</button>
+                </div>
+            </div>
+
+        </div>
 
         <!-- ===== Main Layout ===== -->
         <main class="main-content">
@@ -68,92 +88,92 @@
                 </ul>
             </aside>
 
-        <article class="content-area">
+            <article class="content-area">
 
-            <!-- ===== Hero ===== -->
-            <section class="services-hero">
-                <h2><i class="fa-solid fa-gear"></i> خدماتنا</h2>
-                <p>
-                    نقدم مجموعة متكاملة من الخدمات الرقمية التي تساعدك على بيع وشراء السيارات بسهولة،
-                    بأمان، وبأفضل تجربة استخدام ممكنة.
-                </p>
-            </section>
+                <!-- ===== Hero ===== -->
+                <section class="services-hero">
+                    <h2><i class="fa-solid fa-gear"></i> خدماتنا</h2>
+                    <p>
+                        نقدم مجموعة متكاملة من الخدمات الرقمية التي تساعدك على بيع وشراء السيارات بسهولة،
+                        بأمان، وبأفضل تجربة استخدام ممكنة.
+                    </p>
+                </section>
 
-            <!-- ===== Services Grid (Dynamic) ===== -->
-            <section class="services-grid" id="servicesGrid">
-                <!-- Services injected by JS -->
-            </section>
+                <!-- ===== Services Grid (Dynamic) ===== -->
+                <section class="services-grid" id="servicesGrid">
+                    <!-- Services injected by JS -->
+                </section>
 
-        </article>
+            </article>
 
-    </main>
+        </main>
 
-    <!-- ===== Footer ===== -->
-    <footer class="site-footer">
-        <p>
-            <span class="author-name">سلوان محمد اليمني</span> — © 2026 جميع الحقوق محفوظة
-        </p>
-    </footer>
+        <!-- ===== Footer ===== -->
+        <footer class="site-footer">
+            <p>
+                <span class="author-name">سلوان محمد اليمني</span> — © 2026 جميع الحقوق محفوظة
+            </p>
+        </footer>
 
-</div>
+    </div>
 
-<!-- Scripts -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================
-       SERVICES DATA
-    ===================== */
-    const services = [
-        {
-            title: "نشر إعلانات السيارات",
-            desc: "أنشئ إعلانًا احترافيًا لسيارتك مع صور ومواصفات كاملة للوصول إلى أكبر عدد من المشترين.",
-            img: "../images/services/post-car.jpg",
-            icon: "fa-bullhorn"
-        },
-        {
-            title: "البحث والتصفية الذكية",
-            desc: "ابحث عن السيارات حسب السعر، الموديل، السنة، ونوع الوقود بسهولة وسرعة.",
-            img: "../images/services/search.jpg",
-            icon: "fa-magnifying-glass"
-        },
-        {
-            title: "التواصل المباشر",
-            desc: "تواصل مباشرة مع البائع أو المشتري عبر الهاتف أو واتساب من داخل المنصة.",
-            img: "../images/services/chat.jpg",
-            icon: "fa-comments"
-        },
-        {
-            title: "حفظ السيارات المفضلة",
-            desc: "احفظ السيارات التي تعجبك للرجوع إليها لاحقًا بسهولة.",
-            img: "../images/services/favorites.jpg",
-            icon: "fa-heart"
-        },
-        {
-            title: "تقارير السوق",
-            desc: "اطّلع على متوسط الأسعار واتجاهات السوق لاتخاذ قرار شراء أو بيع ذكي.",
-            img: "../images/services/reports.jpg",
-            icon: "fa-chart-line"
-        },
-        {
-            title: "دعم فني",
-            desc: "فريق دعم جاهز لمساعدتك في أي استفسار أو مشكلة تواجهك أثناء استخدام الموقع.",
-            img: "../images/services/support.jpg",
-            icon: "fa-headset"
-        }
-    ];
+            /* =====================
+               SERVICES DATA
+            ===================== */
+            const services = [
+                {
+                    title: "نشر إعلانات السيارات",
+                    desc: "أنشئ إعلانًا احترافيًا لسيارتك مع صور ومواصفات كاملة للوصول إلى أكبر عدد من المشترين.",
+                    img: "../images/services/post-car.jpg",
+                    icon: "fa-bullhorn"
+                },
+                {
+                    title: "البحث والتصفية الذكية",
+                    desc: "ابحث عن السيارات حسب السعر، الموديل، السنة، ونوع الوقود بسهولة وسرعة.",
+                    img: "../images/services/search.jpg",
+                    icon: "fa-magnifying-glass"
+                },
+                {
+                    title: "التواصل المباشر",
+                    desc: "تواصل مباشرة مع البائع أو المشتري عبر الهاتف أو واتساب من داخل المنصة.",
+                    img: "../images/services/chat.jpg",
+                    icon: "fa-comments"
+                },
+                {
+                    title: "حفظ السيارات المفضلة",
+                    desc: "احفظ السيارات التي تعجبك للرجوع إليها لاحقًا بسهولة.",
+                    img: "../images/services/favorites.jpg",
+                    icon: "fa-heart"
+                },
+                {
+                    title: "تقارير السوق",
+                    desc: "اطّلع على متوسط الأسعار واتجاهات السوق لاتخاذ قرار شراء أو بيع ذكي.",
+                    img: "../images/services/reports.jpg",
+                    icon: "fa-chart-line"
+                },
+                {
+                    title: "دعم فني",
+                    desc: "فريق دعم جاهز لمساعدتك في أي استفسار أو مشكلة تواجهك أثناء استخدام الموقع.",
+                    img: "../images/services/support.jpg",
+                    icon: "fa-headset"
+                }
+            ];
 
-    /* =====================
-       RENDER SERVICES
-    ===================== */
-    const grid = document.getElementById("servicesGrid");
+            /* =====================
+               RENDER SERVICES
+            ===================== */
+            const grid = document.getElementById("servicesGrid");
 
-    if (grid) {
-        services.forEach(service => {
-            const card = document.createElement("div");
-            card.className = "service-card";
+            if (grid) {
+                services.forEach(service => {
+                    const card = document.createElement("div");
+                    card.className = "service-card";
 
-            card.innerHTML = `
+                    card.innerHTML = `
                 <div class="service-image">
                     <img src="${service.img}" alt="${service.title}">
                 </div>
@@ -164,14 +184,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            grid.appendChild(card);
+                    grid.appendChild(card);
+                });
+            }
+
         });
-    }
-
-});
-</script>
-<!-- Sidebar Script -->
-
+    </script>
+    <!-- Sidebar Script -->
     <script src="../wowslider/sidebar.js"></script>
+    <!-- Exit usin modal with AJAX -->
+    <script src="../js/exit-ajax.js"></script>
 </body>
-</html> 
+
+</html>

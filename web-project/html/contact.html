@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <title>تواصل معنا | موقع شراء وبيع السيارات</title>
@@ -13,9 +14,10 @@
     <!-- Responsive -->
     <link rel="stylesheet" href="../css/responsive.css">
 </head>
+
 <body>
 
-<!-- Overlay for sidebar -->
+    <!-- Overlay for sidebar -->
     <div id="sidebarOverlay"></div>
 
     <div class="page-container">
@@ -40,13 +42,30 @@
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="about.html">من نحن</a></li>
                     <li><a href="services.html">الخدمات</a></li>
-                    <li><a href="contact.html"  class="active">تواصل معنا</a></li> 
+                    <li><a href="contact.html" class="active">تواصل معنا</a></li>
                     <li><a href="login.html">تسجيل الدخول</a></li>
                     <li><a href="register.html">تسجيل جديد</a></li>
                 </ul>
             </nav>
+            <!-- Exit Button -->
+            <button id="exitBtn" class="exit-btn" title="خروج">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
         </header>
+        <!-- Exit Confirmation Modal -->
+        <div id="exitModal" class="modal-overlay">
 
+            <div class="modal-box">
+                <h3>تأكيد الخروج</h3>
+                <p id="exitMessage">هل أنت متأكد أنك تريد الخروج من الموقع؟</p>
+
+                <div class="modal-actions">
+                    <button id="cancelExit" class="btn-cancel">لا</button>
+                    <button id="confirmExit" class="btn-confirm">نعم</button>
+                </div>
+            </div>
+
+        </div>
         <!-- ===== Main Layout ===== -->
         <main class="main-content">
 
@@ -67,106 +86,109 @@
                 </ul>
             </aside>
 
-        <article class="content-area">
+            <article class="content-area">
 
-            <!-- ===== Hero ===== -->
-            <section class="contact-hero">
-                <h2><i class="fa-solid fa-envelope-open-text"></i> تواصل معنا</h2>
-                <p>
-                    نحن هنا لمساعدتك في بيع أو شراء سيارتك بسهولة وأمان.
-                    تواصل معنا عبر أي من القنوات التالية أو أرسل لنا رسالة مباشرة.
-                </p>
-            </section>
+                <!-- ===== Hero ===== -->
+                <section class="contact-hero">
+                    <h2><i class="fa-solid fa-envelope-open-text"></i> تواصل معنا</h2>
+                    <p>
+                        نحن هنا لمساعدتك في بيع أو شراء سيارتك بسهولة وأمان.
+                        تواصل معنا عبر أي من القنوات التالية أو أرسل لنا رسالة مباشرة.
+                    </p>
+                </section>
 
-            <!-- ===== Contact Grid ===== -->
-            <section class="contact-grid">
+                <!-- ===== Contact Grid ===== -->
+                <section class="contact-grid">
 
-                <a href="https://facebook.com" target="_blank" class="contact-card facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <h3>فيسبوك</h3>
-                    <p>تابعنا على فيسبوك</p>
-                </a>
+                    <a href="https://facebook.com" target="_blank" class="contact-card facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <h3>فيسبوك</h3>
+                        <p>تابعنا على فيسبوك</p>
+                    </a>
 
-                <a href="https://instagram.com" target="_blank" class="contact-card instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                    <h3>إنستغرام</h3>
-                    <p>شاهد أحدث السيارات</p>
-                </a>
+                    <a href="https://instagram.com" target="_blank" class="contact-card instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                        <h3>إنستغرام</h3>
+                        <p>شاهد أحدث السيارات</p>
+                    </a>
 
-                <a href="https://twitter.com" target="_blank" class="contact-card twitter">
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <h3>تويتر</h3>
-                    <p>آخر الأخبار والعروض</p>
-                </a>
+                    <a href="https://twitter.com" target="_blank" class="contact-card twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <h3>تويتر</h3>
+                        <p>آخر الأخبار والعروض</p>
+                    </a>
 
-                <a href="https://wa.me/967700000000" target="_blank" class="contact-card whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <h3>واتساب</h3>
-                    <p>تواصل مباشر معنا</p>
-                </a>
+                    <a href="https://wa.me/967700000000" target="_blank" class="contact-card whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <h3>واتساب</h3>
+                        <p>تواصل مباشر معنا</p>
+                    </a>
 
-                <a href="mailto:info@carsite.com" class="contact-card email">
-                    <i class="fa-solid fa-envelope"></i>
-                    <h3>البريد الإلكتروني</h3>
-                    <p>info@carsite.com</p>
-                </a>
+                    <a href="mailto:info@carsite.com" class="contact-card email">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h3>البريد الإلكتروني</h3>
+                        <p>info@carsite.com</p>
+                    </a>
 
-                <a href="tel:+967700000000" class="contact-card phone">
-                    <i class="fa-solid fa-phone"></i>
-                    <h3>الهاتف</h3>
-                    <p>+967 700 000 000</p>
-                </a>
+                    <a href="tel:+967700000000" class="contact-card phone">
+                        <i class="fa-solid fa-phone"></i>
+                        <h3>الهاتف</h3>
+                        <p>+967 700 000 000</p>
+                    </a>
 
-            </section>
+                </section>
 
-            <!-- ===== Contact Form ===== -->
-            <section class="contact-form-section">
-                <h2><i class="fa-solid fa-paper-plane"></i> أرسل لنا رسالة</h2>
+                <!-- ===== Contact Form ===== -->
+                <section class="contact-form-section">
+                    <h2><i class="fa-solid fa-paper-plane"></i> أرسل لنا رسالة</h2>
 
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label>الاسم الكامل</label>
-                        <input type="text" placeholder="أدخل اسمك" required>
-                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" placeholder="أدخل اسمك" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label>البريد الإلكتروني</label>
-                        <input type="email" placeholder="example@email.com" required>
-                    </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" placeholder="example@email.com" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label>رقم الهاتف</label>
-                        <input type="tel" placeholder="+967xxxxxxxx">
-                    </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" placeholder="+967xxxxxxxx">
+                        </div>
 
-                    <div class="form-group">
-                        <label>الرسالة</label>
-                        <textarea rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
-                    </div>
+                        <div class="form-group">
+                            <label>الرسالة</label>
+                            <textarea rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+                        </div>
 
-                    <button type="submit" class="send-btn">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        إرسال
-                    </button>
-                </form>
-            </section>
+                        <button type="submit" class="send-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            إرسال
+                        </button>
+                    </form>
+                </section>
 
-        </article>
+            </article>
 
-    </main>
+        </main>
 
-    <!-- ===== Footer ===== -->
-    <footer class="site-footer">
-        <p>
-            <span class="author-name">سلوان محمد اليمني</span> — © 2026 جميع الحقوق محفوظة
-        </p>
-    </footer>
+        <!-- ===== Footer ===== -->
+        <footer class="site-footer">
+            <p>
+                <span class="author-name">سلوان محمد اليمني</span> — © 2026 جميع الحقوق محفوظة
+            </p>
+        </footer>
 
-</div>
+    </div>
 
- <!-- Sidebar Script -->
+    <!-- Sidebar Script -->
 
     <script src="../wowslider/sidebar.js"></script>
+    <!-- Exit usin modal with AJAX -->
+    <script src="../js/exit-ajax.js"></script>
 
 </body>
+
 </html>
